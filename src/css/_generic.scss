@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    touch-action: none; // prevent pull down to refresh
+}
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+body {
+    min-width: 320px;
+    margin: 0;
+    background-color: var(--color-bg);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.6rem;
+}
+button {
+    width: auto;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    font-size: inherit;
+    &:focus {
+        outline: 0;
+    }
+}
+h1 {
+    margin: 0;
+}

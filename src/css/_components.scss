@@ -1,0 +1,147 @@
+
+// HEADINGS ========================================
+.c-heading-1 {
+    font-size: 3.4rem;
+    font-weight: 300;
+    @media (max-width: 420px) {
+        //flex-grow: 0; // align left
+        font-size: 3rem;
+    }
+}
+
+
+// ICONS ========================================
+.c-icon-poop,
+.c-icon-poop--lost {
+    margin-top: 5px;
+}
+.c-icon-poop {
+    position: relative;
+    z-index: 1;
+}
+.c-icon-poop--lost {
+    display: none;
+}
+.is-lost {
+    .c-icon-poop {
+        display: none;
+    }
+    .c-icon-poop--lost {
+        display: inline;
+    }
+}
+@keyframes won-animation {
+  0% {
+    transform: rotate(0deg) scale(1) translateY(0);
+  }
+  50% {
+    transform: rotate(160deg) scale(10) translateY(-30px);
+  }
+  100% {
+    transform: rotate(360deg) scale(1) translateY(0);
+  }
+}
+.is-won {
+    .c-icon-poop {
+        animation: won-animation 1.5s infinite;
+    }
+}
+
+
+
+// BUTTONS ========================================
+.c-btn {
+    display: inline-block;
+    height: 34px;
+    padding: 0 20px;
+    background: #FFF;
+    box-shadow: 2px 2px var(--color-dark);
+    font-size: 2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.c-btn--restart {
+    visibility: hidden;
+}
+.is-lost,
+.is-won {
+    .c-btn--restart {
+        visibility: visible;
+    }
+}
+
+
+
+
+// GRID ========================================
+.c-grid {
+    --grid-border: 2px solid var(--color-bg);
+
+    position: relative;
+    display: grid;
+    width: 400px;
+    height: 400px;
+    font-size: 2.5rem;
+    grid-template-columns: repeat(8, 1fr); // regenerated in js
+    grid-template-rows: repeat(8, 1fr); // regenerated in js
+    user-select: none;
+
+    &.is-disabled {
+        button {
+            pointer-events: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        width: 340px;
+        height: 340px;
+        font-size: 2rem;
+    }
+    @media (max-width: 359px) {
+        width: 300px;
+        height: 300px;
+        font-size: 1.6rem;
+    }
+}
+.c-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: var(--grid-border);
+    border-bottom: var(--grid-border);
+    background-color: #FFF;
+    transition: all .1s;
+
+    &:focus {
+        border-color: #888;
+    }
+    &[disabled] {
+        pointer-events: none;
+    }
+    &.is-revealed {
+        background-color: var(--cell-revealed-color);
+        &.has-flag {
+            background-color: var(--color-flag);
+            &::before {
+                content: ' ';
+            }
+        }
+    }
+    &.has-flag {
+        background-color: var(--color-flag);
+        &::before {
+            content: '😷'; //💧
+        }
+    }
+    &.has-mine {
+        background-color: var(--color-lost);
+        color: #FFF;
+        > svg {
+            width: 35px;
+            height: 35px;
+        }
+        /* &:before {
+            content: '💩';
+        } */
+    }
+}
