@@ -12,6 +12,6 @@
   "license": "ISC",
   "devDependencies": {
     "cssnano": "^4.1.4",
-    "node-sass": "^4.9.3"
+    "node-sass": "^7.0.0"
   }
 }
